@@ -3,6 +3,7 @@ import React from 'react';
 import { Heart, MessageCircle, Send, Bookmark } from 'lucide-react';
 import Avatar from './Avatar';
 import { Reel, User, formatNumber, formatRelativeTime } from '../constants/mockData';
+import VideoPlayer from './VideoPlayer';
 
 interface ReelCardProps {
   reel: Reel;
@@ -22,14 +23,9 @@ const ReelCard: React.FC<ReelCardProps> = ({ reel, user }) => {
         </div>
       </div>
       
-      {/* Video Placeholder - in a real app, this would be an actual video player */}
-      <div className="relative w-full aspect-[9/16] bg-muted flex items-center justify-center">
-        <div className="text-center p-4">
-          <p className="text-muted-foreground mb-2">Video Content</p>
-          <div className="w-12 h-12 rounded-full bg-reelverse-primary/20 flex items-center justify-center mx-auto">
-            <span className="text-reelverse-primary text-xl">▶</span>
-          </div>
-        </div>
+      {/* Video Content */}
+      <div className="relative w-full aspect-[9/16]">
+        <VideoPlayer src={reel.videoUrl} />
       </div>
       
       <div className="reel-footer">

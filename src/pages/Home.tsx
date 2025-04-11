@@ -29,7 +29,7 @@ const Home = () => {
             <LoadingSpinner size="lg" />
           </div>
         ) : (
-          <div className="p-4 space-y-4">
+          <div className="p-4 space-y-6 max-w-md mx-auto">
             {feed.map((item, index) => (
               <ReelCard 
                 key={`${item.user.username}-${index}`} 

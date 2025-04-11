@@ -1,17 +1,22 @@
 
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
 import { generateFeed } from '@/constants/mockData';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import Avatar from '@/components/Avatar';
-import { Heart, MessageCircle, Send, Bookmark, Music } from 'lucide-react';
+import { Heart, MessageCircle, Send, Bookmark, Music, Volume2, VolumeX } from 'lucide-react';
 import { formatNumber } from '@/constants/mockData';
+import VideoPlayer from '@/components/VideoPlayer';
+import { useIsMobile } from '@/hooks/use-mobile';
 
 const Reels = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [reels, setReels] = useState(generateFeed());
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [isMuted, setIsMuted] = useState(true);
+  
+  const isMobile = useIsMobile();
   
   useEffect(() => {
     // Simulate loading data
@@ -35,6 +40,10 @@ const Reels = () => {
       setCurrentIndex(currentIndex - 1);
     }
   };
+
+  const toggleMute = () => {
+    setIsMuted(!isMuted);
+  };
   
   return (
     <div className="app-container">
@@ -47,17 +56,26 @@ const Reels = () => {
           </div>
         ) : (
           <div className="h-full relative">
-            {/* Video Content (placeholder) */}
-            <div className="h-full flex items-center justify-center">
-              <div className="text-white text-center">
-                <div className="w-16 h-16 rounded-full bg-white/20 flex items-center justify-center mx-auto mb-4">
-                  <span className="text-white text-2xl">▶</span>
-                </div>
-                <p className="text-white/60 max-w-xs mx-auto">
-                  {currentReel.caption}
-                </p>
-              </div>
+            {/* Video Content */}
+            <div className="h-full">
+              <VideoPlayer 
+                src={currentReel.videoUrl} 
+                muted={isMuted}
+                className="h-full"
+              />
             </div>
+            
+            {/* Volume Control */}
+            <button 
+              onClick={toggleMute}
+              className="absolute top-24 right-4 z-10 bg-black/30 p-2 rounded-full"
+            >
+              {isMuted ? (
+                <VolumeX size={24} className="text-white" />
+              ) : (
+                <Volume2 size={24} className="text-white" />
+              )}
+            </button>
             
             {/* Overlay Controls */}
             <div className="absolute bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-black/80 to-transparent">
@@ -102,9 +120,15 @@ const Reels = () => {
               </div>
             </div>
             
-            {/* Navigation Controls */}
-            <div className="absolute top-0 left-0 w-1/3 h-full" onClick={handlePrevious} />
-            <div className="absolute top-0 right-0 w-1/3 h-full" onClick={handleNext} />
+            {/* Navigation Controls - Make them bigger and more responsive on mobile */}
+            <div 
+              className="absolute top-0 left-0 w-1/3 h-full" 
+              onClick={handlePrevious} 
+            />
+            <div 
+              className="absolute top-0 right-0 w-1/3 h-full" 
+              onClick={handleNext} 
+            />
             
             {/* Progress Indicator */}
             <div className="absolute top-20 left-0 right-0 flex gap-1 px-2">
