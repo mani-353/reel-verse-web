@@ -122,103 +122,87 @@ export function formatRelativeTime(dateStr: string): string {
 }
 
 export function generateFeed(): Reel[] {
-  const vimeoId = "1074629687";
+  const vimeoIds = [
+    "1074629687", // Original video
+    "1074633267", // New video 1
+    "1074633306", // New video 2
+    "1074633328", // New video 3
+    "1074633171", // New video 4
+    "1074633209", // New video 5
+    "1074633234"  // New video 6
+  ];
   
-  return [
+  const users = [
     {
       id: '1',
-      caption: "Try it and let me know #learnfromkhaby #comedy",
-      videoId: vimeoId,
-      likes: 2500000,
-      comments: 60000,
-      views: 40000000,
-      postedAt: new Date('2024-11-01T10:00:00Z').toISOString(),
-      user: {
-        id: '1',
-        username: "khaby00",
-        name: "Khaby Lame",
-        profilePic: "https://i.pravatar.cc/150?img=11",
-        followers: 81000000,
-        following: 100,
-        bio: "Life is simple, so are my solutions.",
-        posts: 200
-      }
+      username: "khaby00",
+      name: "Khaby Lame",
+      profilePic: "https://i.pravatar.cc/150?img=11",
+      followers: 81000000,
+      following: 100,
+      bio: "Life is simple, so are my solutions.",
+      posts: 200
     },
     {
       id: '2',
-      caption: "I may be coaching in the game @nbaallstar but I'm getting my jumper ready just in case my team needs me",
-      videoId: vimeoId,
-      likes: 3000000,
-      comments: 75000,
-      views: 45000000,
-      postedAt: new Date('2025-02-15T12:00:00Z').toISOString(),
-      user: {
-        id: '2',
-        username: "aliaabhatt",
-        name: "Alia Bhatt",
-        profilePic: "https://i.pravatar.cc/150?img=5",
-        followers: 86000000,
-        following: 200,
-        bio: "Actress. Dreamer. Creator.",
-        posts: 500
-      }
+      username: "aliaabhatt",
+      name: "Alia Bhatt",
+      profilePic: "https://i.pravatar.cc/150?img=5",
+      followers: 86000000,
+      following: 200,
+      bio: "Actress. Dreamer. Creator.",
+      posts: 500
     },
     {
       id: '3',
-      caption: "First attempt at my favourite food - ft. Mama dearest",
-      videoId: vimeoId,
-      likes: 631000,
-      comments: 1391,
-      views: 10000000,
-      postedAt: new Date('2025-02-27T08:00:00Z').toISOString(),
-      user: {
-        id: '3',
-        username: "virat.kohli",
-        name: "Virat Kohli",
-        profilePic: "https://i.pravatar.cc/150?img=3",
-        followers: 271000000,
-        following: 50,
-        bio: "Cricket is life. Nothing else matters.",
-        posts: 1000
-      }
+      username: "virat.kohli",
+      name: "Virat Kohli",
+      profilePic: "https://i.pravatar.cc/150?img=3",
+      followers: 271000000,
+      following: 50,
+      bio: "Cricket is life. Nothing else matters.",
+      posts: 1000
     },
     {
       id: '4',
-      caption: "Dance vibes 💃🕺",
-      videoId: vimeoId,
-      likes: 1100000,
-      comments: 30000,
-      views: 15000000,
-      postedAt: new Date('2024-10-05T13:00:00Z').toISOString(),
-      user: {
-        id: '4',
-        username: "avneetkaur_13",
-        name: "Avneet Kaur",
-        profilePic: "https://i.pravatar.cc/150?img=9",
-        followers: 31700000,
-        following: 150,
-        bio: "Dancer. Actor. Dreamer.",
-        posts: 450
-      }
+      username: "avneetkaur_13",
+      name: "Avneet Kaur",
+      profilePic: "https://i.pravatar.cc/150?img=9",
+      followers: 31700000,
+      following: 150,
+      bio: "Dancer. Actor. Dreamer.",
+      posts: 450
     },
     {
       id: '5',
-      caption: "New song out now! 🎶",
-      videoId: vimeoId,
-      likes: 2000000,
-      comments: 50000,
-      views: 25000000,
-      postedAt: new Date('2024-11-15T10:00:00Z').toISOString(),
-      user: {
-        id: '5',
-        username: "bhuvan.bam22",
-        name: "Bhuvan Bam",
-        profilePic: "https://i.pravatar.cc/150?img=8",
-        followers: 20600000,
-        following: 80,
-        bio: "Content creator. Musician. Storyteller.",
-        posts: 300
-      }
+      username: "bhuvan.bam22",
+      name: "Bhuvan Bam",
+      profilePic: "https://i.pravatar.cc/150?img=8",
+      followers: 20600000,
+      following: 80,
+      bio: "Content creator. Musician. Storyteller.",
+      posts: 300
     }
   ];
+  
+  const captions = [
+    "Try it and let me know #learnfromkhaby #comedy",
+    "I may be coaching in the game @nbaallstar but I'm getting my jumper ready just in case my team needs me",
+    "First attempt at my favourite food - ft. Mama dearest",
+    "Dance vibes 💃🕺",
+    "New song out now! 🎶",
+    "Just vibing with the beat 🎵",
+    "Watch till the end for a surprise 😂"
+  ];
+  
+  return vimeoIds.map((videoId, index) => ({
+    id: (index + 1).toString(),
+    caption: captions[index % captions.length],
+    videoId: videoId,
+    likes: Math.floor(Math.random() * 3000000) + 500000,
+    comments: Math.floor(Math.random() * 75000) + 1000,
+    views: Math.floor(Math.random() * 45000000) + 5000000,
+    postedAt: new Date(2025 - Math.floor(Math.random() * 2), Math.floor(Math.random() * 12), Math.floor(Math.random() * 28)).toISOString(),
+    user: users[index % users.length]
+  }));
 }
