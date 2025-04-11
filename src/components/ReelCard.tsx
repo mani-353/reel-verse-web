@@ -3,7 +3,7 @@ import React from 'react';
 import { Heart, MessageCircle, Send, Bookmark } from 'lucide-react';
 import Avatar from './Avatar';
 import { Reel, User, formatNumber, formatRelativeTime } from '../constants/mockData';
-import VideoPlayer from './VideoPlayer';
+import VimeoPlayer from './VimeoPlayer';
 
 interface ReelCardProps {
   reel: Reel;
@@ -24,8 +24,8 @@ const ReelCard: React.FC<ReelCardProps> = ({ reel, user }) => {
       </div>
       
       {/* Video Content */}
-      <div className="relative w-full aspect-[9/16]">
-        <VideoPlayer src={reel.videoUrl} />
+      <div className="relative w-full">
+        <VimeoPlayer videoId={reel.videoId} />
       </div>
       
       <div className="reel-footer">

@@ -1,4 +1,3 @@
-
 export interface User {
   id: string;
   username: string;
@@ -13,7 +12,7 @@ export interface User {
 export interface Reel {
   id: string;
   caption: string;
-  videoUrl: string;
+  videoId: string;
   likes: number;
   comments: number;
   views: number;
@@ -21,7 +20,6 @@ export interface Reel {
   user: User;
 }
 
-// Added users array that was missing
 export const users: User[] = [
   {
     id: '1',
@@ -124,19 +122,13 @@ export function formatRelativeTime(dateStr: string): string {
 }
 
 export function generateFeed(): Reel[] {
-  const videoUrls = [
-    "https://collection.cloudinary.com/dr3ksoifa/3174872804f44d7b1eeb306d245f592a",
-    "https://collection.cloudinary.com/dr3ksoifa/0fc6f355e93d08851d3a113ccb3d2d95",
-    "https://collection.cloudinary.com/dr3ksoifa/0aca85adc7643bfe343f42942fed7887",
-    "https://collection.cloudinary.com/dr3ksoifa/4347b1cbd3f150fa2493bc4ca2663a69",
-    "https://collection.cloudinary.com/dr3ksoifa/d50336ff6a7034548baf293edb6ce634"
-  ];
-
+  const vimeoId = "1074629687";
+  
   return [
     {
       id: '1',
       caption: "Try it and let me know #learnfromkhaby #comedy",
-      videoUrl: videoUrls[0],
+      videoId: vimeoId,
       likes: 2500000,
       comments: 60000,
       views: 40000000,
@@ -155,7 +147,7 @@ export function generateFeed(): Reel[] {
     {
       id: '2',
       caption: "I may be coaching in the game @nbaallstar but I'm getting my jumper ready just in case my team needs me",
-      videoUrl: videoUrls[1],
+      videoId: vimeoId,
       likes: 3000000,
       comments: 75000,
       views: 45000000,
@@ -174,7 +166,7 @@ export function generateFeed(): Reel[] {
     {
       id: '3',
       caption: "First attempt at my favourite food - ft. Mama dearest",
-      videoUrl: videoUrls[2],
+      videoId: vimeoId,
       likes: 631000,
       comments: 1391,
       views: 10000000,
@@ -193,7 +185,7 @@ export function generateFeed(): Reel[] {
     {
       id: '4',
       caption: "Dance vibes 💃🕺",
-      videoUrl: videoUrls[3],
+      videoId: vimeoId,
       likes: 1100000,
       comments: 30000,
       views: 15000000,
@@ -212,7 +204,7 @@ export function generateFeed(): Reel[] {
     {
       id: '5',
       caption: "New song out now! 🎶",
-      videoUrl: videoUrls[4],
+      videoId: vimeoId,
       likes: 2000000,
       comments: 50000,
       views: 25000000,
