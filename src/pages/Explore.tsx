@@ -1,11 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
 import { Search } from 'lucide-react';
 import { Input } from '@/components/ui/input';
 import LoadingSpinner from '@/components/LoadingSpinner';
-import { generateFeed } from '@/constants/mockData';
+import { generateFeed } from '@/constants/feedGenerator';
 
 const Explore = () => {
   const [isLoading, setIsLoading] = useState(true);

@@ -2,11 +2,11 @@
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
-import { generateFeed } from '@/constants/mockData';
+import { generateFeed } from '@/constants/feedGenerator';
+import { formatNumber } from '@/constants/formatters';
 import LoadingSpinner from '@/components/LoadingSpinner';
 import Avatar from '@/components/Avatar';
 import { Heart, MessageCircle, Send, Bookmark, Music } from 'lucide-react';
-import { formatNumber } from '@/constants/mockData';
 import VimeoPlayer from '@/components/VimeoPlayer';
 import { useIsMobile } from '@/hooks/use-mobile';
 

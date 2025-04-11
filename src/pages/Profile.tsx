@@ -6,7 +6,8 @@ import { useAuth } from '@/contexts/AuthContext';
 import { Button } from '@/components/ui/button';
 import Avatar from '@/components/Avatar';
 import { Grid, Video, Bookmark, Settings, LogOut } from 'lucide-react';
-import { generateFeed, formatNumber } from '@/constants/mockData';
+import { generateFeed } from '@/constants/feedGenerator';
+import { formatNumber } from '@/constants/formatters';
 import { useNavigate } from 'react-router-dom';
 import { useToast } from '@/hooks/use-toast';
 

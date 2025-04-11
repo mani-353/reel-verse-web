@@ -1,10 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import Header from '@/components/Header';
 import BottomNav from '@/components/BottomNav';
 import ReelCard from '@/components/ReelCard';
 import LoadingSpinner from '@/components/LoadingSpinner';
-import { generateFeed } from '@/constants/mockData';
+import { generateFeed } from '@/constants/feedGenerator';
 
 const Home = () => {
   const [isLoading, setIsLoading] = useState(true);

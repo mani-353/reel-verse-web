@@ -2,7 +2,8 @@
 import React from 'react';
 import { Heart, MessageCircle, Send, Bookmark } from 'lucide-react';
 import Avatar from './Avatar';
-import { Reel, User, formatNumber, formatRelativeTime } from '../constants/mockData';
+import { Reel, User } from '../constants/types';
+import { formatNumber, formatRelativeTime } from '../constants/formatters';
 import VimeoPlayer from './VimeoPlayer';
 
 interface ReelCardProps {
